@@ -5,7 +5,12 @@ from __future__ import annotations
 from pathlib import Path
 
 from repoaudit.checks import check_license, check_readme, check_workflows
-from repoaudit.constants import EXIT_INVALID_PATH, EXIT_STRICT_FAILURE, EXIT_SUCCESS, MIN_README_BYTES
+from repoaudit.constants import (
+    EXIT_INVALID_PATH,
+    EXIT_STRICT_FAILURE,
+    EXIT_SUCCESS,
+    MIN_README_BYTES,
+)
 
 
 def test_exit_codes_are_distinct() -> None:
