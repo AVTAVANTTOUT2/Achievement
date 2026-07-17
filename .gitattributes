@@ -1,0 +1,30 @@
+# Auto-detect text files and normalize line endings
+* text=auto eol=lf
+
+# Explicit source / docs
+*.py text eol=lf
+*.md text eol=lf
+*.toml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sh text eol=lf
+
+# Keep shell scripts executable on checkout
+*.sh text eol=lf
+
+# Binary assets (future-proof)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.zip binary
+*.gz binary
+
+# Export ignore for source archives
+.gitattributes export-ignore
+.gitignore export-ignore
+.github export-ignore
+tests export-ignore
+.venv export-ignore
