@@ -8,6 +8,7 @@ from pathlib import Path
 
 from repoaudit import __version__
 from repoaudit.checks import run_all_checks
+from repoaudit.constants import EXIT_INVALID_PATH, EXIT_STRICT_FAILURE, EXIT_SUCCESS
 from repoaudit.report import format_report
 
 
@@ -43,11 +44,11 @@ def main(argv: list[str] | None = None) -> int:
         results = run_all_checks(root)
     except FileNotFoundError as exc:
         print(f"erreur: {exc}", file=sys.stderr)
-        return 2
+        return EXIT_INVALID_PATH
     print(format_report(root, results))
     if args.strict and not all(r.passed for r in results):
-        return 1
-    return 0
+        return EXIT_STRICT_FAILURE
+    return EXIT_SUCCESS
 
 
 if __name__ == "__main__":
