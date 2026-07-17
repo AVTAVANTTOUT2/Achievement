@@ -1,0 +1,41 @@
+name: Rapport de bug
+description: Signaler un comportement incorrect de repoaudit
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Merci de fournir assez de détails pour reproduire le problème.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Que s'est-il passé ?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Étapes de reproduction
+      description: Commandes et arborescence minimale
+      placeholder: |
+        1. Créer un dépôt temporaire
+        2. Lancer `repoaudit .`
+        3. Observer...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: "0.1.0 / commit SHA"
+    validations:
+      required: true
+  - type: input
+    id: python
+    attributes:
+      label: Version Python
+      placeholder: "3.12.x"
+    validations:
+      required: true
