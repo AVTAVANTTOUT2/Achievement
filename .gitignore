@@ -4,12 +4,14 @@ __pycache__/
 *$py.class
 *.so
 .Python
+*.pyo
 
 # Virtual environments
 .venv/
 venv/
 env/
 ENV/
+.python-version
 
 # Distribution / packaging
 build/
@@ -17,6 +19,8 @@ dist/
 *.egg-info/
 .eggs/
 *.egg
+pip-wheel-metadata/
+share/python-wheels/
 
 # Test / coverage
 .coverage
@@ -27,24 +31,37 @@ htmlcov/
 .nox/
 coverage.xml
 *.cover
+.hypothesis/
+.cache/
 
 # Type checkers / linters
 .mypy_cache/
 .ruff_cache/
 .pytype/
+.pyre/
 
 # IDE / OS
 .idea/
 .vscode/
 *.swp
 *.swo
+*~
 .DS_Store
 Thumbs.db
+Desktop.ini
 
 # Local secrets — never commit
 .env
 .env.*
 !.env.example
 *.pem
+*.key
 credentials.json
 secrets/
+auth.json
+
+# Packaging / tooling artifacts
+*.manifest
+*.spec
+.dmypy.json
+dmypy.json
