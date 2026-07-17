@@ -5,6 +5,17 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
+from repoaudit.constants import (
+    CODE_OF_CONDUCT_NAMES,
+    CONTRIBUTING_NAMES,
+    LICENSE_NAMES,
+    MIN_README_BYTES,
+    README_NAMES,
+    SECURITY_NAMES,
+    TEST_MARKERS,
+    WORKFLOW_DIR,
+)
+
 
 @dataclass(frozen=True)
 class CheckResult:
@@ -14,19 +25,6 @@ class CheckResult:
     passed: bool
     detail: str
     weight: int = 1
-
-
-README_NAMES = ("README.md", "README.rst", "README.txt", "README")
-LICENSE_NAMES = ("LICENSE", "LICENSE.md", "LICENSE.txt", "COPYING", "COPYING.md")
-CONTRIBUTING_NAMES = ("CONTRIBUTING.md", "CONTRIBUTING", "docs/CONTRIBUTING.md")
-CODE_OF_CONDUCT_NAMES = (
-    "CODE_OF_CONDUCT.md",
-    "CODE_OF_CONDUCT",
-    ".github/CODE_OF_CONDUCT.md",
-)
-SECURITY_NAMES = ("SECURITY.md", ".github/SECURITY.md", "docs/SECURITY.md")
-TEST_MARKERS = ("tests", "test", "spec", "__tests__")
-WORKFLOW_DIR = Path(".github/workflows")
 
 
 def _exists_any(root: Path, names: tuple[str, ...]) -> Path | None:
@@ -42,7 +40,7 @@ def check_readme(root: Path) -> CheckResult:
     if found is None:
         return CheckResult("README", False, "Aucun fichier README trouvé")
     size = found.stat().st_size
-    if size < 64:
+    if size < MIN_README_BYTES:
         return CheckResult("README", False, f"{found.name} trop court ({size} octets)")
     return CheckResult("README", True, f"Présent: {found.name} ({size} octets)")
 
