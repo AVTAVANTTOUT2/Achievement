@@ -4,7 +4,8 @@
 
 | Version | Supportée |
 | --- | --- |
-| 0.1.x | Oui |
+| 1.0.x | Oui |
+| 0.1.x | Oui (corrections de sécurité) |
 | < 0.1 | Non |
 
 ## Signaler une vulnérabilité
