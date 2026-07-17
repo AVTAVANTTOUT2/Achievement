@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "repoaudit"
-version = "0.1.0"
+version = "1.0.0"
 description = "CLI léger pour auditer la qualité communautaire d'un dépôt GitHub local"
 readme = "README.md"
 license = { text = "MIT" }

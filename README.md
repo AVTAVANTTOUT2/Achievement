@@ -88,8 +88,11 @@ python -m repoaudit .
 
 ## Contribution
 
-Les contributions sont les bienvenues. Voir [CONTRIBUTING.md](CONTRIBUTING.md) dès qu'il sera disponible, ou ouvrir une issue pour proposer une amélioration.
+Les contributions sont les bienvenues. Voir [CONTRIBUTING.md](CONTRIBUTING.md).
+
+Guide détaillé : [docs/USAGE.md](docs/USAGE.md)  
+Suivi achievements : [ACHIEVEMENTS.md](ACHIEVEMENTS.md)
 
 ## Licence
 
-Distribuée sous licence MIT — voir le fichier `LICENSE` du dépôt.
+Distribuée sous licence MIT — voir le fichier [LICENSE](LICENSE).
