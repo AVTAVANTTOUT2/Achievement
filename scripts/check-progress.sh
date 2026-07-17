@@ -21,7 +21,8 @@ MERGED_PRS=$(gh pr list --repo "$REPO" --state merged --limit 100 --json number 
 COAUTHORED=$(gh api "repos/${REPO}/pulls?state=closed&per_page=100" --jq '[.[] | select(.merged_at != null) | select(.body // "" | test("Co-authored-by:"; "i") or (.title // "" | test("co-authored"; "i")))] | length' 2>/dev/null || echo "n/a")
 
 # Fallback: scan merge commits for Co-authored-by trailers
-COAUTHOR_COMMITS=$(git log --all --grep='Co-authored-by:' --pretty=oneline 2>/dev/null | wc -l | tr -d ' ')
+COAUTHOR_COMMITS=$(git log --all --format='%B' | grep -c '^Co-authored-by: AVTAVANTTOUT2 ' || true)
+COAUTHOR_ANY=$(git log --all --format='%B' | grep -c '^Co-authored-by:' || true)
 
 STARS=$(gh api "repos/${REPO}" --jq .stargazers_count)
 HAS_DISCUSSIONS=$(gh api "repos/${REPO}" --jq .has_discussions)
@@ -33,7 +34,8 @@ echo "Profil GitHub     : ${PROFILE_URL}"
 echo "Dépôt             : ${REPO_URL}"
 echo "PR fusionnées     : ${MERGED_PRS}"
 echo "PR co-écrites (heuristique body/title) : ${COAUTHORED}"
-echo "Commits avec trailer Co-authored-by    : ${COAUTHOR_COMMITS}"
+echo "Commits Co-authored-by AVTAVANTTOUT2 : ${COAUTHOR_COMMITS}"
+echo "Commits avec tout trailer Co-authored-by : ${COAUTHOR_ANY}"
 echo "Étoiles           : ${STARS}"
 echo "Discussions       : ${HAS_DISCUSSIONS}"
 echo "Issues ouvertes   : ${OPEN_ISSUES}"
